@@ -42,28 +42,28 @@ class Fish:
         
 		
 	def liveALittle(self):
-    offsetList = [(-1,1) ,(0,1) ,(1,1),          
-                  (-1,0)        ,(1,0),
-                  (-1,-1),(0,-1),(1,-1)]     
+		offsetList = [(-1,1) ,(0,1) ,(1,1),          
+					  (-1,0)        ,(1,0),
+					  (-1,-1),(0,-1),(1,-1)]     
 
-    adjfish = 0                                  
-    for offset in offsetList:                    
-        newx = self.xpos + offset[0]             
-        newy = self.ypos + offset[1]
-        if 0 <= newx < self.world.getMaxX()  and
-           0 <= newy < self.world.getMaxY():          
-            if (not self.world.emptyLocation(newx,newy)) and
-                isinstance(self.world.lookAtLocation(newx,newy),Fish):
-                adjfish = adjfish + 1   
-     
-    if adjfish >= 2:                   
-        self.world.delThing(self)      
-    else:
-        self.breedTick = self.breedTick + 1
-        if self.breedTick >= 12:
-            self.tryToBreed()
+		adjfish = 0                                  
+		for offset in offsetList:                    
+			newx = self.xpos + offset[0]             
+			newy = self.ypos + offset[1]
+			if 0 <= newx < self.world.getMaxX()  and
+			   0 <= newy < self.world.getMaxY():          
+				if (not self.world.emptyLocation(newx,newy)) and
+					isinstance(self.world.lookAtLocation(newx,newy),Fish):
+					adjfish = adjfish + 1   
+		 
+		if adjfish >= 2:                   
+			self.world.delThing(self)      
+		else:
+			self.breedTick = self.breedTick + 1
+			if self.breedTick >= 12:
+				self.tryToBreed()
 
-        self.tryToMove()
-	
-	
+			self.tryToMove()
+		
+		
 	
