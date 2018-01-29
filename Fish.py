@@ -35,10 +35,9 @@ class Fish:
 
     
     def move(self,newx,newy):
-        '''
-        ask world's moveThing() to update obj's location in grid to new coordinates
-        update Fish object's instance-coordinates
-        move object's instance-Turtle to new coordinates'''
+        #ask world's moveThing() to update obj's location in grid to new coordinates
+        #update Fish object's instance-coordinates
+        #move object's instance-Turtle to new coordinates
 	
 	def liveALittle(self):
 		offsetList = [(-1,1) ,(0,1) ,(1,1),          
