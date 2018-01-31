@@ -10,7 +10,7 @@ class Fish:
         self.world = None                 
         
         self.breedTick = 0
-
+	
 	def setX(self,newx):
         # set obj's x position
     
