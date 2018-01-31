@@ -1,3 +1,4 @@
+import turtle
 class World():
 
 	def __init__(self,mx,my):
@@ -13,10 +14,10 @@ class World():
 			self.grid.append(row)
 			
 			
-		self.wturtle=turtle.Turtle()
+		self.wturtle = turtle.Turtle()
 		self.wscreen = turtle.Screen()
 		self.wscreen.setworldcoordinates(0,0,self.maxX-1,self.maxY-1)
-		self.wscreen.addshape("Bear.gif")
+		self.wscreen.addshape("Bear.gif") 
 		self.wscreen.addshape("Fish.gif")
 		self.wturtle.hideturtle()
 		
@@ -53,7 +54,7 @@ class World():
 		
 	def delThing(self,athing):
 		aThing.hide()
-		self.grid[(aThing.getY()][aThing.getX()]=None
+		self.grid[aThing.getY()][aThing.getX()]=None
 		self.thingList.remove(aThing)
 	
 	def moveThing(self, oldx, oldy, newx, newy):
@@ -85,6 +86,13 @@ class World():
 		return self.grid[y][x]
 			
 			
-		
-	
-	
+#testing	
+def main():
+        
+    worldWidth = 50
+    worldHeight = 25
+    myworld = World(worldWidth,worldHeight)      
+    myworld.draw()
+
+main()
+                          
