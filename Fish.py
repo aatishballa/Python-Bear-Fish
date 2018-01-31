@@ -13,20 +13,27 @@ class Fish:
 
     def setX(self,newx):
         # set obj's x position
+        self.xpos = newx
+        
     
     def setY(self,newy):
         # set obj's y position
+        self.ypos = newy
     
     def getX(self):
         # return obj's x position
+        return self.xpos
     
     def getY(self):
         # set obj's y position
+        return self.ypos
     
     def setWorld(self,aworld):
         # set obj's world reference
+        self.world=aworld
+
     
-	def appear(self):
+    def appear(self):
         # send instance turtle to correct coordinates
         # unhide turtle
 
