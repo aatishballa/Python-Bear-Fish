@@ -1,11 +1,10 @@
 import turtle
 class World():
-
+	grid = []
 	def __init__(self,mx,my):
 		self.maxX=mx
 		self.maxY=my
 		self.thingList=[]
-		self.grid=[]
 		
 		for arow in range(self.maxY):
 			row=[]
@@ -13,15 +12,15 @@ class World():
 				row.append(None)
 			self.grid.append(row)
 			
-			
 		self.wturtle = turtle.Turtle()
+		self.wturtle.hideturtle()		
 		self.wscreen = turtle.Screen()
-		self.wscreen.setworldcoordinates(0,0,self.maxX-1,self.maxY-1)
+		self.wscreen.setworldcoordinates(0,0,self.maxX-1, self.maxY-1)
 		self.wscreen.addshape("Bear.gif") 
 		self.wscreen.addshape("Fish.gif")
-		self.wturtle.hideturtle()
 		
 	def draw(self):
+		#world box drawn
 		self.wscreen.tracer(0)
 		self.wturtle.forward(self.maxX-1)
 		self.wturtle.left(90)
@@ -32,14 +31,27 @@ class World():
 		self.wturtle.forward(self.maxY-1)
 		self.wturtle.left(90)
 		
+		cellWidth = 1
+		cellHeight = 1
+
+		#horizontal lines
 		for i in range(self.maxY-1):
 			self.wturtle.forward(self.maxX-1)
 			self.wturtle.backward(self.maxX-1)
 			self.wturtle.left(90)
 			self.wturtle.forward(1)
 			self.wturtle.right(90)
+	
+		self.wturtle.forward(1)
+		self.wturtle.right(90)	
+		for i in range(self.maxX - 2):
+			self.wturtle.forward(self.maxY-1)
+			self.wturtle.backward(self.maxY-1)
+			self.wturtle.left(90)
+			self.wturtle.forward(1)
+			self.wturtle.right(90)	
+
 		self.wscreen.tracer(1)
-		
 			
 	def freezeWorld(self):
 		self.wscreen.exitonclick()
