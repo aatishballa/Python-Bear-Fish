@@ -1,4 +1,4 @@
-class Bear:
+class Bear(World):
     
     def __init__(self):
         self.turtle = turtle.Turtle()
@@ -15,7 +15,6 @@ class Bear:
     def setX(self,newx):
         self.xpos = newx
         
-    
     def setY(self,newy):
         self.ypos = newy
     
@@ -28,8 +27,13 @@ class Bear:
     def setWorld(self,aworld):
         self.world = aworld
 
-    def move(self,newx,newy):
-        return
+    def appear(self):
+        if (self.turtle.isVisible != True):  
+            self.turtle.showturtle()  #makes current turtle object visible       
 
     def hide(self):
+        self.turtle.hideturtle()  #makes current turtle object invisible
+
+    def move(self,newx,newy):
         return
+    
