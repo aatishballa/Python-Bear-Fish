@@ -10,8 +10,8 @@ class Fish:
         self.world = None                 
         
         self.breedTick = 0
-	
-	def setX(self,newx):
+
+    def setX(self,newx):
         # set obj's x position
     
     def setY(self,newy):
@@ -35,32 +35,32 @@ class Fish:
 
     
     def move(self,newx,newy):
-        #ask world's moveThing() to update obj's location in grid to new coordinates
-        #update Fish object's instance-coordinates
-        #move object's instance-Turtle to new coordinates
-		
+        '''
+        ask world's moveThing() to update obj's location in grid to new coordinates
+        update Fish object's instance-coordinates
+        move object's instance-Turtle to new coordinates'''
+        
+    def liveALittle(self):
+        
+        offsetList = [(-1,1) ,(0,1) ,(1,1),(-1,0),(1,0),(-1,-1),(0,-1),(1,-1)]     
+
+        adjfish = 0                                  
+        for offset in offsetList:                    
+            newx = self.xpos + offset[0]             
+            newy = self.ypos + offset[1]
+            if 0 <= newx < self.world.getMaxX()  and
+               0 <= newy < self.world.getMaxY():          
+                if (not self.world.emptyLocation(newx,newy)) and isinstance(self.world.lookAtLocation(newx,newy),Fish):
+                    adjfish = adjfish + 1   
+         
+        if adjfish >= 2:                   
+            self.world.delThing(self)      
+        else:
+            self.breedTick = self.breedTick + 1
+            if self.breedTick >= 12:
+                self.tryToBreed()
+
+            self.tryToMove()
 	
-	def liveALittle(self):
-		offsetList = [(-1,1) ,(0,1) ,(1,1),          
-					  (-1,0)        ,(1,0),
-					  (-1,-1),(0,-1),(1,-1)]     
-
-		adjfish = 0
-		
-		for offset in offsetList:                    
-			newx = self.xpos + offset[0]             
-			newy = self.ypos + offset[1]
-			if 0 <= newx < self.world.getMaxX()  and 0 <= newy < self.world.getMaxY():          
-				if (not self.world.emptyLocation(newx,newy)) and isinstance(self.world.lookAtLocation(newx,newy),Fish):
-					adjfish = adjfish + 1   
-		 
-		if adjfish >= 2:                   
-			self.world.delThing(self)      
-		else:
-			self.breedTick = self.breedTick + 1
-			if self.breedTick >= 12:
-				self.tryToBreed()
-
-			self.tryToMove()
-		
+	
 	
