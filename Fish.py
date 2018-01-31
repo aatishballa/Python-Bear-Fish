@@ -37,8 +37,9 @@ class Fish(World):
     def appear(self):
         # send instance turtle to correct coordinates
         # unhide turtle
-
-        #
+        
+        if (self.turtle.isVisible != True):  
+            self.turtle.showturtle()  #makes current turtle object visible       
         
 
     def hide(self):
