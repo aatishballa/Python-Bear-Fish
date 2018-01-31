@@ -1,4 +1,5 @@
-class Fish:
+import turtle
+class Fish(World):
     def __init__(self):
         self.turtle = turtle.Turtle()
         self.turtle.up()
@@ -30,15 +31,19 @@ class Fish:
     
     def setWorld(self,aworld):
         # set obj's world reference
-        self.world=aworld
+        self.world = aworld
 
     
     def appear(self):
         # send instance turtle to correct coordinates
         # unhide turtle
 
+        #
+        
+
     def hide(self):
         # hide turtle
+        self.turtle.hideturtle()  #makes current turtle object invisible
 
     
     def move(self,newx,newy):
