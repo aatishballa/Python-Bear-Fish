@@ -1,3 +1,8 @@
+from World import World
+from Fish import Fish
+from Bear import Bear
+import random
+
 def mainSimulation():
     numberOfBears = 10
     numberOfFish = 10
@@ -12,6 +17,7 @@ def mainSimulation():
         newfish = Fish()
         x = random.randrange(myworld.getMaxX())
         y = random.randrange(myworld.getMaxY())
+
         while not myworld.emptyLocation(x,y):
             x = random.randrange(myworld.getMaxX())
             y = random.randrange(myworld.getMaxY())
@@ -21,6 +27,7 @@ def mainSimulation():
         newbear = Bear()
         x = random.randrange(myworld.getMaxX())
         y = random.randrange(myworld.getMaxY())
+
         while not myworld.emptyLocation(x,y):   
             x = random.randrange(myworld.getMaxX())
             y = random.randrange(myworld.getMaxY())
