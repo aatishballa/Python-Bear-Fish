@@ -1,3 +1,4 @@
+from World import World
 class Bear(World):
     
     def __init__(self):
