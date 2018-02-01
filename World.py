@@ -1,6 +1,6 @@
 import turtle
 class World():
-	grid = []
+	global grid = []
 	def __init__(self,mx,my):
 		self.maxX=mx
 		self.maxY=my
@@ -58,16 +58,16 @@ class World():
 	
 	def addThing(self, athing, x, y):
 		athing.setX(x)
-		aThing.setY(y)
+		athing.setY(y)
 		self.grid[y][x] = athing
-		aThing.setWorld(self)
-		self.thingList.append(aThing)
-		aThing.appear()
+		athing.setWorld(self)
+		self.thingList.append(athing)
+		athing.appear()
 		
 	def delThing(self,athing):
-		aThing.hide()
-		self.grid[aThing.getY()][aThing.getX()]=None
-		self.thingList.remove(aThing)
+		athing.hide()
+		self.grid[athing.getY()][athing.getX()]=None
+		self.thingList.remove(athing)
 	
 	def moveThing(self, oldx, oldy, newx, newy):
 		self.grid[newy][newx] = self.grid[oldy][oldx]
@@ -75,7 +75,7 @@ class World():
 		self.grid [oldy][oldx]= None
 	
 	def getMaxX(self):
-		return self.max;
+		return self.maxX
 		
 	
 	def getMaxY(self):
@@ -88,13 +88,13 @@ class World():
 			randomthing.liveALittle()
 	
 	def emptyLocation(self,x,y):
-		if self.grid[y][x] == None:
+		if grid[y][x] == None:
 			return True
 		else:
 			return False
 	
 	def lookAtLocation(self, x, y):
-		return self.grid[y][x]
+		return grid[y][x]
 			
 			
 #testing	
