@@ -12,7 +12,7 @@ class Animal:
 		self.living = True
 		self.simulationSpeed = 1 
 		self.tick = 0
-		self.breedtick = 0
+		self.breedtick = random.random() * BREED_UPDATE 
 		self.breedRate = 1
 		self.xpos = 0
 		self.ypos = 0
