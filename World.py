@@ -99,11 +99,11 @@ class World():
 			
 #testing	
 def main():
-        
     worldWidth = 50
     worldHeight = 25
     myworld = World(worldWidth,worldHeight)      
     myworld.draw()
+    return myworld
 
-main()
+#main()
                           
