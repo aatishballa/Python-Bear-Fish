@@ -1,6 +1,7 @@
 import turtle
 
 TICK_UPDATE = 100
+BREED_UPDATE = 1
 
 class Animal:
 	def __init__(self, world):
@@ -13,6 +14,8 @@ class Animal:
 		self.tick = 0
 		self.breedtick = 0
 		self.breedRate = 10
+		self.xpos = 0
+		self.ypos = 0
 
 	def liveALittle(self):
 		pass
@@ -41,12 +44,22 @@ class Animal:
 				if self.world.emptyLocation(i, j):
 					return (i, j)	
 	
+	def move(self):
+		a = [-1, 0, 1]
+		for i in a:
+			for j in a:
+				if self.world.emptyLocation(self.xpos + i, self.ypos + j):
+					self.world.moveThing(self, self.xpos + i, self.ypos + j)
+					return
+
 	def update(self):
-		self.tick += simulationSpeed
+		self.wturtle.goto(self.ypos, self.xpos)
+		self.tick += self.simulationSpeed
 		if self.tick >= TICK_UPDATE:
-			self.breedtick += 1
-			if(self.breedtick >= self.breedRate):
+			self.breedtick += self.breedRate
+			if(self.breedtick >= BREED_UPDATE):
 				self.breed()
 
 			self.tick = 0
-			
+		
+		self.move()

@@ -51,7 +51,7 @@ class World():
 			self.wturtle.forward(1)
 			self.wturtle.right(90)	
 
-		self.wscreen.tracer(1)
+		self.wscreen.tracer(1, 0)
 			
 	def freezeWorld(self):
 		self.wscreen.exitonclick()
@@ -69,10 +69,13 @@ class World():
 		self.grid[athing.getY()][athing.getX()]=None
 		self.thingList.remove(athing)
 	
-	def moveThing(self, oldx, oldy, newx, newy):
+	def moveThing(self, thing, newx, newy):
+		oldx = thing.xpos
+		oldy = thing.ypos
+		thing.xpos = newx
+		thing.ypos = newy
 		self.grid[newy][newx] = self.grid[oldy][oldx]
-		self.grid[oldy][oldx] = self.grid [oldy] [oldx]
-		self.grid [oldy][oldx]= None
+		self.grid[oldy][oldx] = None
 	
 	def getMaxX(self):
 		return self.maxX
@@ -88,13 +91,15 @@ class World():
 			randomthing.liveALittle()
 	
 	def emptyLocation(self,x,y):
-		if grid[y][x] == None:
+		if y >= len(self.grid) or x >= len(self.grid[0]) or y < 0 or x < 0: 
+			return False
+		if self.grid[y][x] == None:
 			return True
 		else:
 			return False
 	
 	def lookAtLocation(self, x, y):
-		return grid[y][x]
+		return self.grid[y][x]
 			
 			
 #testing	
