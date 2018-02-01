@@ -1,6 +1,6 @@
 import turtle
 class World():
-	global grid = []
+	grid = []
 	def __init__(self,mx,my):
 		self.maxX=mx
 		self.maxY=my
