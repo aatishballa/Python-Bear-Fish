@@ -1,3 +1,4 @@
+from World import World
 import turtle
 class Fish(World):
     def __init__(self):
@@ -38,7 +39,7 @@ class Fish(World):
         # send instance turtle to correct coordinates
         # unhide turtle
         
-        if (self.turtle.isVisible != True):  
+        if (self.turtle.isvisible() != True):  
             self.turtle.showturtle()  #makes current turtle object visible       
         
 
@@ -46,8 +47,10 @@ class Fish(World):
         # hide turtle
         self.turtle.hideturtle()  #makes current turtle object invisible
 
-    
     def move(self,newx,newy):
+        self.moveThing(self.xpos, self.ypos, newx, newy)
+        self.xpos = newx
+        self.ypos = newy
         '''
         ask world's moveThing() to update obj's location in grid to new coordinates
         update Fish object's instance-coordinates
@@ -61,8 +64,7 @@ class Fish(World):
         for offset in offsetList:                    
             newx = self.xpos + offset[0]             
             newy = self.ypos + offset[1]
-            if 0 <= newx < self.world.getMaxX()  and
-               0 <= newy < self.world.getMaxY():          
+            if 0 <= newx and newx < self.world.getMaxX() and 0 <= newy and newy < self.world.getMaxY():          
                 if (not self.world.emptyLocation(newx,newy)) and isinstance(self.world.lookAtLocation(newx,newy),Fish):
                     adjfish = adjfish + 1   
          
