@@ -1,20 +1,23 @@
 from World import World
 from Fish import Fish
 from Bear import Bear
-import random
+import random, turtle
+
+def onkey():
+    print("key pressed")
 
 def mainSimulation():
     numberOfBears = 10
     numberOfFish = 10
-    worldLifeTime = 1000
-    worldWidth = 50
+    worldLifeTime = 100000000
+    worldWidth = 40
     worldHeight = 25
     
     myworld = World(worldWidth,worldHeight)      
     myworld.draw()                               
 
     for i in range(numberOfFish):  
-        newfish = Fish()
+        newfish = Fish(myworld)
         x = random.randrange(myworld.getMaxX())
         y = random.randrange(myworld.getMaxY())
 
@@ -24,7 +27,7 @@ def mainSimulation():
         myworld.addThing(newfish,x,y)        
 
     for i in range(numberOfBears):   
-        newbear = Bear()
+        newbear = Bear(myworld)
         x = random.randrange(myworld.getMaxX())
         y = random.randrange(myworld.getMaxY())
 
