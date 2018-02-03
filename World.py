@@ -1,10 +1,14 @@
-import turtle, random
+import turtle, random, sys
+
 class World():
         def __init__(self,mx,my):
                 self.grid = []
                 self.maxX = mx
                 self.maxY = my
                 self.thingList = []
+
+                self.bearBreedRate = 1
+                self.fishBreedRate = 20
 
                 for arow in range(self.maxY * 2):
                         row=[]
@@ -16,8 +20,18 @@ class World():
                 self.wturtle = turtle.Turtle()
                 self.wturtle.hideturtle()		
                 self.wscreen = turtle.Screen()
+
                 self.wscreen.onkey(lambda: self.increaseSpeed(), "Up")
                 self.wscreen.onkey(lambda: self.decreaseSpeed(), "Down")
+                self.wscreen.onkey(lambda: self.incBreed(), "z")
+                self.wscreen.onkey(lambda: self.decBreed(), "x")
+                self.wscreen.onkey(lambda: self.incBearBreed(), "a")
+                self.wscreen.onkey(lambda: self.decBearBreed(), "s")
+                self.wscreen.onkey(lambda: self.incFishBreed(), "q")
+                self.wscreen.onkey(lambda: self.decFishBreed(), "w")
+                
+                self.wscreen.onkey(lambda: sys.exit(), "q")
+                
                 self.simspeed = 1
                 self.setTitle()
                 self.wscreen.listen()
@@ -47,6 +61,42 @@ class World():
 
                 self.setTitle()
 
+        def setBreed(self):
+                for i in self.thingList:
+                        if i is None:
+                                continue
+                        if i.animal == "Fish":
+                                i.breedRate = self.fishBreedRate
+                        else:
+                                i.breedRate = self.bearBreedRate
+
+        def incFishBreed(self):
+                self.fishBreedRate += 1
+                self.setBreed()
+                
+        def incBearBreed(self):
+                self.bearBreedRate += 1
+                self.setBreed()
+                
+        def decFishBreed(self):
+                self.fishBreedRate -= 1
+                self.setBreed()
+                
+        def decBearBreed(self):
+                self.bearBreedRate -= 1
+                self.setBreed()
+                
+        def incBreed(self):
+                self.fishBreedRate += 1
+                self.bearBreedRate += 1
+                self.setBreed()
+
+        def decBreed(self):
+                print(self.fishBreedRate)
+                self.fishBreedRate -= 1
+                self.bearBreedRate -= 1
+                self.setBreed()
+                
         def draw(self):
        	        #world box drawn
                 self.wscreen.tracer(0)
@@ -89,6 +139,11 @@ class World():
                 athing.setY(y)
                 self.grid[y][x] = athing
                 athing.simulationSpeed = self.simspeed
+                if athing.animal == "Fish":
+                        athing.breedrate = self.fishBreedRate
+                else:
+                        athing.breedrate = self.bearBreedRate
+                        
                 athing.setWorld(self)
                 self.thingList.append(athing)
                 athing.appear()

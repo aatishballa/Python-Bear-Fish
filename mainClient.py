@@ -7,7 +7,7 @@ def onkey():
     print("key pressed")
 
 def mainSimulation():
-    numberOfBears = 10
+    numberOfBears = 2
     numberOfFish = 10
     worldLifeTime = 100000000
     worldWidth = 20
