@@ -28,7 +28,7 @@ class Bear(Animal):
                                         continue
                                 if self.world.grid[ny][nx] is None:
                                         continue
-                                if self.world.grid[ny][nx].animal == "Fish":
+                                if self.world.grid[ny][nx].animal == "Fish" or self.energy < 20:
                                         self.world.delThing(self.world.grid[ny][nx])
                                         self.energy += 100
                                         if self.energy > Animal.MAX_ENERGY:

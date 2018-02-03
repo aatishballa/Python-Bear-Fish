@@ -35,7 +35,7 @@ class World():
                 self.simspeed = 1
                 self.setTitle()
                 self.wscreen.listen()
-                self.wscreen.setworldcoordinates(0,0,self.maxX, self.maxY)
+                self.wscreen.setworldcoordinates(0,0,self.maxX - 1, self.maxY - 1)
                 self.wscreen.addshape("Bear.gif") 
                 self.wscreen.addshape("Fish.gif")
 
