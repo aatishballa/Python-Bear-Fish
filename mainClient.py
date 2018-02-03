@@ -10,8 +10,8 @@ def mainSimulation():
     numberOfBears = 10
     numberOfFish = 10
     worldLifeTime = 100000000
-    worldWidth = 40
-    worldHeight = 25
+    worldWidth = 20
+    worldHeight = 10
     
     myworld = World(worldWidth,worldHeight)      
     myworld.draw()                               

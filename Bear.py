@@ -5,13 +5,6 @@ class Bear(Animal):
 		Animal.__init__(self, world)
 		self.wturtle.shape("Bear.gif")
 
-	def appear(self):
-		if (self.wturtle.isvisible() != True):  
- 			self.wturtle.showturtle()
-
-	def hide(self):
-		self.wturtle.hideturtle()  #makes current turtle object invisible
-
 	def breed(self):
 		loc = self.breedLocation()
 		if loc is None:
