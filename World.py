@@ -21,6 +21,7 @@ class World():
                 self.wturtle.hideturtle()		
                 self.wscreen = turtle.Screen()
 
+                self.wscreen.onkey(lambda: self.term(), "t")
                 self.wscreen.onkey(lambda: self.increaseSpeed(), "Up")
                 self.wscreen.onkey(lambda: self.decreaseSpeed(), "Down")
                 self.wscreen.onkey(lambda: self.incBreed(), "z")
@@ -30,7 +31,6 @@ class World():
                 self.wscreen.onkey(lambda: self.incFishBreed(), "q")
                 self.wscreen.onkey(lambda: self.decFishBreed(), "w")
                 
-                self.wscreen.onkey(lambda: sys.exit(), "q")
                 
                 self.simspeed = 1
                 self.setTitle()
@@ -39,6 +39,10 @@ class World():
                 self.wscreen.addshape("Bear.gif") 
                 self.wscreen.addshape("Fish.gif")
 
+        def term(self):
+                self.wscreen.bye()
+                sys.exit()
+                
         def setTitle(self):
                 pre = "Python-Turtle-Bear Simulation | Simspeed: "
                 self.wscreen.title(pre + str(self.simspeed * 100) + '%')
@@ -92,7 +96,6 @@ class World():
                 self.setBreed()
 
         def decBreed(self):
-                print(self.fishBreedRate)
                 self.fishBreedRate -= 1
                 self.bearBreedRate -= 1
                 self.setBreed()
@@ -174,7 +177,6 @@ class World():
                         randomthing.liveALittle()
 	                
         def emptyLocation(self,x,y):
-                #print(x, y)
                 if y >= self.maxY * 2 or x >= self.maxX / 2 or y < 0 or x < 0: 
                         return False
                 
