@@ -1,12 +1,12 @@
 import turtle, random
 
-TICK_UPDATE = 100
-BREED_UPDATE = 100
-MAX_ENERGY = 2000
-MIN_ENERGY_TO_BREED = 250
-MIN_ENERGY_TO_MOVE = 1
-
 class Animal:
+        TICK_UPDATE = 100
+        BREED_UPDATE = 100
+        MAX_ENERGY = 200
+        MIN_ENERGY_TO_BREED = 10
+        MIN_ENERGY_TO_MOVE = 1
+
         def __init__(self, world):
                 self.world = world
                 self.wturtle = turtle.Turtle()
@@ -15,11 +15,12 @@ class Animal:
                 self.living = True
                 self.simulationSpeed = 1 
                 self.tick = 0
-                self.breedtick = random.random() * BREED_UPDATE 
+                self.breedtick = random.random() * self.BREED_UPDATE 
                 self.breedRate = 1
                 self.xpos = 0
                 self.ypos = 0
-                self.energy = MAX_ENERGY
+                self.energy = self.MAX_ENERGY
+                self.animal = ""
 
         def liveALittle(self):
                 pass
@@ -63,6 +64,8 @@ class Animal:
                 random.shuffle(b)
                 for i in a:
                         for j in b:
+                                if i == j:
+                                        continue
                                 if self.world.emptyLocation(self.xpos + i, self.ypos + j):
                                         self.world.moveThing(self, self.xpos + i, self.ypos + j)
                                         return
@@ -77,12 +80,12 @@ class Animal:
                         
                 self.wturtle.goto(self.ypos, self.xpos)
                 self.tick += self.simulationSpeed
-                if self.tick >= TICK_UPDATE:
+                if self.tick >= self.TICK_UPDATE:
                         self.breedtick += self.breedRate
-                        if(self.breedtick >= BREED_UPDATE and self.energy >= MIN_ENERGY_TO_BREED):
-                                self.energy -= MIN_ENERGY_TO_BREED
+                        if(self.breedtick >= self.BREED_UPDATE and self.energy >= self.MIN_ENERGY_TO_BREED):
+                                self.energy -= self.MIN_ENERGY_TO_BREED
                                 self.breed()
 
                         self.tick = 0
                         self.move()
-                        self.energy -= MIN_ENERGY_TO_MOVE
+                        self.energy -= self.MIN_ENERGY_TO_MOVE
