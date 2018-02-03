@@ -2,7 +2,7 @@ import turtle, random
 
 class Animal:
         TICK_UPDATE = 100
-        BREED_UPDATE = 100
+        BREED_UPDATE = 1000
         MAX_ENERGY = 200
         MIN_ENERGY_TO_BREED = 10
         MIN_ENERGY_TO_MOVE = 1

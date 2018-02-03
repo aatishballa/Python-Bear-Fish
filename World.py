@@ -19,15 +19,22 @@ class World():
                 self.wscreen.onkey(lambda: self.increaseSpeed(), "Up")
                 self.wscreen.onkey(lambda: self.decreaseSpeed(), "Down")
                 self.simspeed = 1
+                self.setTitle()
                 self.wscreen.listen()
                 self.wscreen.setworldcoordinates(0,0,self.maxX, self.maxY)
                 self.wscreen.addshape("Bear.gif") 
                 self.wscreen.addshape("Fish.gif")
-		
+
+        def setTitle(self):
+                pre = "Python-Turtle-Bear Simulation | Simspeed: "
+                self.wscreen.title(pre + str(self.simspeed * 100) + '%')
+                
         def increaseSpeed(self):
 	        self.simspeed += 10
 	        for i in self.thingList:
 	       	        i.simulationSpeed += 10
+
+                self.setTitle()
 
         def decreaseSpeed(self):
        	        self.simspeed -= 10
@@ -37,6 +44,8 @@ class World():
 
                 for i in self.thingList:
                         i.simulationSpeed -= 10
+
+                self.setTitle()
 
         def draw(self):
        	        #world box drawn

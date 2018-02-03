@@ -4,7 +4,7 @@ class Fish(Animal):
     def __init__(self, world):
         Animal.__init__(self, world)
         self.wturtle.shape("Fish.gif")
-        self.breedRate = 33
+        self.breedRate = 333
         self.animal = "Fish"
 
     def breed(self):
