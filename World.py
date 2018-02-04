@@ -48,9 +48,9 @@ class World():
                 self.wscreen.title(pre + str(self.simspeed * 100) + '%')
                 
         def increaseSpeed(self):
-	        self.simspeed += 10
-	        for i in self.thingList:
-	       	        i.simulationSpeed += 10
+                self.simspeed += 10
+                for i in self.thingList:
+                        i.simulationSpeed += 10
 
                 self.setTitle()
 

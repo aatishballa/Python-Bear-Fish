@@ -1,19 +1,19 @@
 from Animal import Animal
 
 class Bear(Animal):
-	def __init__(self, world):
-		Animal.__init__(self, world)
-		self.wturtle.shape("Bear.gif")
+        def __init__(self, world):
+                Animal.__init__(self, world)
+                self.wturtle.shape("Bear.gif")
                 self.animal = "Bear"
 
-	def breed(self):
-		loc = self.breedLocation()
-		if loc is None:
-			return
-		b = Bear(self.world)
-		self.world.addThing(b, loc[0], loc[1])
+        def breed(self):
+                loc = self.breedLocation()
+                if loc is None:
+                        return
+                b = Bear(self.world)
+                self.world.addThing(b, loc[0], loc[1])
 
-	def liveALittle(self):
+        def liveALittle(self):
                 a = [-1, 0, 1]
                 b = [-1, 0, 1]
                 for i in a:
