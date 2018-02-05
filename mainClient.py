@@ -1,20 +1,28 @@
 from World import World
 from Fish import Fish
 from Bear import Bear
+
 import random, turtle
+import csv
 
 def onkey():
     print("key pressed")
 
 def mainSimulation():
-    numberOfBears = 2
+
+    
+    numberOfBears = 3
     numberOfFish = 10
-    worldLifeTime = 100000000
+    worldLifeTime = 1000
     worldWidth = 20
     worldHeight = 10
+
+
     
     myworld = World(worldWidth,worldHeight)      
-    myworld.draw()                               
+    myworld.draw()
+
+    counterTicks=worldLifeTime
 
     for i in range(numberOfFish):  
         newfish = Fish(myworld)
@@ -24,7 +32,8 @@ def mainSimulation():
         while not myworld.emptyLocation(x,y):
             x = random.randrange(myworld.getMaxX())
             y = random.randrange(myworld.getMaxY())
-        myworld.addThing(newfish,x,y)        
+        myworld.addThing(newfish,x,y)
+        
 
     for i in range(numberOfBears):   
         newbear = Bear(myworld)
@@ -36,11 +45,21 @@ def mainSimulation():
             y = random.randrange(myworld.getMaxY())
         myworld.addThing(newbear,x,y)     
     
-    for i in range(worldLifeTime):     
+    for i in range(worldLifeTime):
+        counterTicks=i
         myworld.liveALittle()          
+
+    myworld.freezeWorld()
+
+    csvfile=open('bearFish.txt', 'w')
+    column="ticks, num_bears, num_fish \n"
+    csvfile.write(column)
     
-    myworld.freezeWorld() 
-         
+    for i in range(counterTicks):
+        row= str(i) + "," + str(myworld.bearCount)+ "," + str(myworld.fishCount)+"\n"
+        csvfile.write(row)
+
+    
 mainSimulation()
 
 	
