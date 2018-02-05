@@ -9,6 +9,8 @@ class World():
 
                 self.bearBreedRate = 1
                 self.fishBreedRate = 20
+                self.bearCount = 0
+                self.fishCount = 0
 
                 for arow in range(self.maxY * 2):
                         row=[]
@@ -143,8 +145,10 @@ class World():
                 self.grid[y][x] = athing
                 athing.simulationSpeed = self.simspeed
                 if athing.animal == "Fish":
+                        self.fishCount += 1
                         athing.breedrate = self.fishBreedRate
                 else:
+                        self.bearCount += 1
                         athing.breedrate = self.bearBreedRate
                         
                 athing.setWorld(self)
@@ -152,6 +156,11 @@ class World():
                 athing.appear()
 		
         def delThing(self,athing):
+                if(athing.animal == "Fish"):
+                        self.fishCount -= 1
+                else:
+                        self.bearCount -= 1
+                        
                 athing.hide()
                 self.grid[athing.getY()][athing.getX()]=None
                 self.thingList.remove(athing)
