@@ -13,7 +13,7 @@ def mainSimulation():
     
     numberOfBears = 3
     numberOfFish = 10
-    worldLifeTime = 1000
+    worldLifeTime = 10000
     worldWidth = 20
     worldHeight = 10
 
@@ -45,19 +45,18 @@ def mainSimulation():
             y = random.randrange(myworld.getMaxY())
         myworld.addThing(newbear,x,y)     
     
-    for i in range(worldLifeTime):
-        counterTicks=i
-        myworld.liveALittle()          
-
-    myworld.freezeWorld()
-
     csvfile=open('bearFish.txt', 'w')
     column="ticks, num_bears, num_fish \n"
     csvfile.write(column)
-    
-    for i in range(counterTicks):
+	
+    for i in range(worldLifeTime):
+        counterTicks=i
+        myworld.liveALittle()        
         row= str(i) + "," + str(myworld.bearCount)+ "," + str(myworld.fishCount)+"\n"
         csvfile.write(row)
+
+    myworld.freezeWorld()
+    
 
     
 mainSimulation()
